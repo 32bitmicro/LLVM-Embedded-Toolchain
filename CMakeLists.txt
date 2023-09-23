@@ -18,7 +18,7 @@
 
 # How to use this file
 #
-# This file is used to build LLVM Embedded Toolchain for Arm.
+# This file is used to build LLVM Embedded Toolchain .
 # Recent versions of the following tools are pre-requisites:
 # * A toolchain such as gcc & binutils
 # * cmake
@@ -75,7 +75,7 @@
 # If cross-building, there will be two toolchains built:
 # 1. The "build" toolchain. This is used to build the libraries.
 # 2. The "host" toolchain. This is the toolchain that will be packaged
-#    up into "LLVM Embedded Toolchain for Arm".
+#    up into "LLVM Embedded Toolchain ".
 # For "native" builds the "build" toolchain is also used as the "host"
 # toolchain.
 #
@@ -135,7 +135,7 @@ option(
     ON
 )
 
-set(BUG_REPORT_URL "https://github.com/ARM-software/LLVM-embedded-toolchain-for-Arm/issues" CACHE STRING "")
+set(BUG_REPORT_URL "https://github.com/32bitmicro/LLVM-Embedded-Toolchain/issues" CACHE STRING "")
 set(LLVM_DISTRIBUTION_COMPONENTS
     clang-format
     clang-resource-headers
@@ -251,7 +251,7 @@ FetchContent_Declare(llvmproject
     GIT_PROGRESS TRUE
     PATCH_COMMAND git reset --quiet --hard && git clean --quiet --force -dx && git apply ${CMAKE_CURRENT_SOURCE_DIR}/patches/llvm-project.patch
     # Add the llvm subdirectory later to ensure that
-    # LLVMEmbeddedToolchainForArm is the first project declared.
+    # LLVMEmbeddedToolchain is the first project declared.
     # Otherwise CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT
     # can't be used.
     SOURCE_SUBDIR do_not_add_llvm_subdir_yet
@@ -288,10 +288,10 @@ endfunction()
 get_llvm_version_numbers(${llvmproject_SOURCE_DIR})
 
 project(
-    LLVMEmbeddedToolchainForArm
+    LLVMEmbeddedToolchain
     VERSION ${LLVM_VERSION_MAJOR}.${LLVM_VERSION_MINOR}.${LLVM_VERSION_PATCH}
-    DESCRIPTION "LLVM Embedded Toolchain for Arm"
-    HOMEPAGE_URL "https://github.com/ARM-software/LLVM-embedded-toolchain-for-Arm"
+    DESCRIPTION "LLVM Embedded Toolchain "
+    HOMEPAGE_URL "https://github.com/32bitmicro/LLVM-Embedded-Toolchain"
 )
 
 # We generally want to install to a local directory to see what the
@@ -371,8 +371,8 @@ add_custom_target(
     version_txt
     COMMAND
     "${CMAKE_COMMAND}"
-    -DLLVMEmbeddedToolchainForArm_VERSION=${LLVMEmbeddedToolchainForArm_VERSION}
-    -DLLVMEmbeddedToolchainForArm_SOURCE_DIR=${CMAKE_CURRENT_SOURCE_DIR}
+    -DLLVMEmbeddedToolchain_VERSION=${LLVMEmbeddedToolchain_VERSION}
+    -DLLVMEmbeddedToolchain_SOURCE_DIR=${CMAKE_CURRENT_SOURCE_DIR}
     -Dllvmproject_SOURCE_DIR=${llvmproject_SOURCE_DIR}
     -Dpicolibc_SOURCE_DIR=${picolibc_SOURCE_DIR}
     -P ${CMAKE_CURRENT_SOURCE_DIR}/cmake/generate_version_txt.cmake
