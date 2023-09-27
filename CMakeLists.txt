@@ -1,4 +1,5 @@
 #
+# Copyright (c) 2023, Pawel Wodnicki.
 # Copyright (c) 2022, Arm Limited and affiliates.
 # SPDX-License-Identifier: Apache-2.0
 #
@@ -170,7 +171,8 @@ set(LLVM_TOOLCHAIN_DISTRIBUTION_COMPONENTS
 installed by the install-llvm-toolchain target"
 )
 set(LLVM_ENABLE_PROJECTS clang;lld CACHE STRING "")
-set(LLVM_TARGETS_TO_BUILD AArch64;ARM CACHE STRING "")
+set(LLVM_TARGETS_TO_BUILD AArch64;ARM;AVR;Mips;MSP430;RISCV;X86 CACHE STRING "")
+set(LLVM_EXPERIMENTAL_TARGETS_TO_BUILD M68k CACHE STRING "")
 set(LLVM_DEFAULT_TARGET_TRIPLE aarch64-linux-gnu CACHE STRING "")
 set(LLVM_APPEND_VC_REV OFF CACHE BOOL "")
 set(LLVM_ENABLE_TERMINFO OFF CACHE BOOL "")
